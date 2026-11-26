@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>About Us | Qinit Apparel</title>
+  <meta name="description" content="Learn about Qinit Apparel – premium Ankara fabrics crafted for authenticity, sophistication, and timeless style.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    /* ===== 1. COLOURS ===== */
+    :root {
+      --blue: #1c3f9e;
+      --blue-dark: #12296b;
+      --yellow: #f6b900;
+      --white: #ffffff;
+      --ash: #eceeef;
+      --ash-dark: #5c6166;
+      --text: #1d2230;
+    }
+
+    /* ===== 2. BASICS ===== */
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: "DM Sans", Arial, sans-serif; color: var(--text); background: var(--white); line-height: 1.6; }
+    h1, h2, h3 { font-family: "Bricolage Grotesque", Arial, sans-serif; line-height: 1.15; }
+    a { color: inherit; }
+    .wrap { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+    :focus-visible { outline: 3px solid var(--yellow); outline-offset: 3px; }
+
+    /* ===== 3. TOP BAR ===== */
+    .topbar { background: var(--blue-dark); color: var(--ash); font-size: 0.9rem; }
+    .topbar .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 6px 20px; padding-top: 8px; padding-bottom: 8px; }
+    .topbar a { text-decoration: none; color: var(--yellow); }
+    .topbar a:hover { text-decoration: underline; }
+
+    /* ===== 4. HEADER ===== */
+    header { background: var(--white); border-bottom: 4px solid var(--yellow); position: sticky; top: 0; z-index: 10; }
+    .header-row { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; padding: 10px 20px; }
+    .logo img { height: 52px; display: block; }
+    nav a { text-decoration: none; font-weight: 700; margin-left: 22px; color: var(--blue); }
+    nav a:hover { color: var(--blue-dark); text-decoration: underline; text-decoration-color: var(--yellow); text-decoration-thickness: 3px; }
+    nav a[aria-current="page"] { text-decoration: underline; text-decoration-color: var(--yellow); text-decoration-thickness: 3px; }
+
+    /* ===== 5. PAGE BANNER ===== */
+    .banner { background: var(--blue); color: var(--white); padding: 56px 0 48px; position: relative; overflow: hidden; }
+    .banner::after {
+      content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 16px;
+      background-image: radial-gradient(circle at 50% 100%, var(--yellow) 0 7px, transparent 8px);
+      background-size: 28px 16px;
+    }
+    .banner h1 { color: var(--white); font-size: clamp(2.2rem, 5vw, 3.4rem); font-weight: 800; }
+    .crumbs { margin-top: 8px; color: #d6defa; }
+    .crumbs a { color: var(--yellow); text-decoration: none; }
+    .crumbs a:hover { text-decoration: underline; }
+
+    /* ===== 6. CONTENT SECTIONS ===== */
+    .section { padding: 72px 0; }
+    .section-alt { background: var(--ash); padding: 72px 0; }
+    .section-blue { background: var(--blue); color: var(--white); padding: 72px 0; }
+
+    h2 { font-size: clamp(1.8rem, 4vw, 2.4rem); color: var(--blue); margin-bottom: 16px; }
+    .section-blue h2 { color: var(--yellow); }
+    .section-blue p { color: #e6ebf8; }
+    p { max-width: 65ch; margin-bottom: 16px; color: var(--ash-dark); }
+
+    /* ===== 7. TWO-COLUMN GRID ===== */
+    .two-col { display: grid; grid-template-columns: 1.1fr 1fr; gap: 48px; align-items: center; }
+    .two-col img { width: 100%; height: auto; border-radius: 6px; display: block; }
+    .two-col-reverse { display: grid; grid-template-columns: 1fr 1.1fr; gap: 48px; align-items: center; }
+    .two-col-reverse img { width: 100%; height: auto; border-radius: 6px; display: block; order: -1; }
+
+    /* ===== 8. VALUES CARDS ===== */
+    .values-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; margin-top: 36px; }
+    .value-card { background: var(--white); border-radius: 6px; padding: 28px; border-top: 5px solid var(--yellow); box-shadow: 0 2px 10px rgba(18, 41, 107, 0.08); }
+    .value-card h3 { font-size: 1.2rem; color: var(--blue); margin-bottom: 10px; }
+    .value-card p { color: var(--ash-dark); margin: 0; max-width: none; }
+    .value-icon { font-size: 2rem; margin-bottom: 12px; }
+
+    /* ===== 9. CTA STRIP ===== */
+    .cta-strip { background: var(--yellow); padding: 56px 0; text-align: center; }
+    .cta-strip h2 { color: var(--blue-dark); margin-bottom: 12px; }
+    .cta-strip p { color: var(--blue-dark); margin: 0 auto 24px; max-width: 55ch; }
+    .btn-row { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+    .btn { display: inline-block; background: var(--blue); color: var(--white); font-weight: 700; padding: 14px 28px; border-radius: 4px; text-decoration: none; }
+    .btn:hover { background: var(--blue-dark); }
+    .btn-outline { background: transparent; border: 3px solid var(--blue-dark); color: var(--blue-dark); }
+    .btn-outline:hover { background: var(--blue-dark); color: var(--white); }
+
+    /* ===== 10. FOOTER ===== */
+    footer { background: var(--blue-dark); color: var(--ash); border-top: 4px solid var(--yellow); }
+    .foot-grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 30px; padding: 44px 20px 30px; }
+    footer h3 { color: var(--yellow); font-size: 1.1rem; margin-bottom: 12px; }
+    footer ul { list-style: none; }
+    footer li { margin-bottom: 6px; }
+    footer a { text-decoration: none; }
+    footer a:hover { color: var(--yellow); }
+    .copy { text-align: center; padding: 18px 20px; border-top: 1px solid rgba(255, 255, 255, 0.15); font-size: 0.9rem; }
+
+    /* ===== 11. PHONES ===== */
+    @media (max-width: 800px) {
+      .two-col, .two-col-reverse, .values-grid, .foot-grid { grid-template-columns: 1fr; }
+      .two-col-reverse img { order: 0; }
+      nav a { margin: 0 14px 0 0; }
+      .section, .section-alt, .section-blue { padding: 52px 0; }
+    }
+  </style>
+  <link rel="stylesheet" href="banner.css">
+</head>
+<body>
+
+  <!-- ===== TOP BAR ===== -->
+  <div class="topbar">
+    <div class="wrap">
+      <span>Email: <a href="mailto:ojoinioluwablessing2016@gmail.com">ojoinioluwablessing2016@gmail.com</a></span>
+      <span>WhatsApp: <a href="https://wa.me/2347034673506">+234 703 467 3506</a></span>
+    </div>
+  </div>
+
+  <!-- ===== HEADER ===== -->
+  <header>
+    <div class="wrap header-row">
+      <a class="logo" href="home.html" aria-label="Qinit Apparel home">
+        <img src="QinitApparel.png" alt="Qinit Apparel">
+      </a>
+      <nav aria-label="Main navigation">
+        <a href="home.html">Home</a>
+        <a href="our ranges.html">Our Ranges</a>
+        <a href="About.html" aria-current="page">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="cart.html">Cart</a>
+        <a href="index.html">Sign Up / Log In</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ===== BANNER ===== -->
+    <section class="banner">
+      <div class="wrap">
+        <h1>About Us</h1>
+        <p class="crumbs"><a href="home.html">Home</a> / About Us</p>
+      </div>
+    </section>
+
+    <!-- ===== WHO WE ARE ===== -->
+    <section class="section">
+      <div class="wrap two-col">
+        <div>
+          <h2>Welcome to Qinit Apparel</h2>
+          <p>Step into Elegance, Wear Your Royalty.</p>
+          <p>Discover an exquisite collection of premium Ankara prints, crafted for those who value authenticity, sophistication, and timeless style. From vibrant statement patterns to subtle, high-grade weaves, we offer top-tier African fabrics tailored to elevate every occasion without breaking the bank.</p>
+          <p>Whether you are dressing for a wedding, aso ebi event, or everyday elegance, Qinit Apparel is your trusted destination for quality African fabric in Akure, Ondo State and beyond.</p>
+        </div>
+        <img src="AboutUs.jpg" alt="Qinit Apparel Ankara fabrics" width="500" height="500">
+      </div>
+    </section>
+
+    <!-- ===== OUR STORY ===== -->
+    <section class="section-alt">
+      <div class="wrap">
+        <h2>Our Story</h2>
+        <p>Qinit Apparel was born from a deep love of African textile heritage and a desire to make premium Ankara fabrics accessible to everyone. We noticed that quality and affordability rarely came together so we set out to change that.</p>
+        <p>Starting from Millennium Oda Road, Akure, we have grown into a trusted name for individuals, tailors, event coordinators, and resellers who refuse to compromise on quality. Every fabric we stock is carefully selected for its vibrancy, durability, and authentic African craftsmanship.</p>
+        <p>Today, we serve customers across Nigeria, offering three flexible ranges so you can get exactly what you need no more, no less.</p>
+      </div>
+    </section>
+
+    <!-- ===== OUR VALUES ===== -->
+    <section class="section-blue">
+      <div class="wrap">
+        <h2>What We Stand For</h2>
+        <p>These values guide everything we do at Qinit Apparel.</p>
+        <div class="values-grid">
+          <div class="value-card">
+            <div class="value-icon">🎨</div>
+            <h3>Authenticity</h3>
+            <p>Every print we carry celebrates genuine African textile tradition no imitations, no shortcuts.</p>
+          </div>
+          <div class="value-card">
+            <div class="value-icon">✨</div>
+            <h3>Quality First</h3>
+            <p>We hand-pick fabrics that meet our strict standards for colour fastness, texture, and craftsmanship.</p>
+          </div>
+          <div class="value-card">
+            <div class="value-icon">💛</div>
+            <h3>Affordability</h3>
+            <p>Premium Ankara should not be a luxury. We keep our prices fair so everyone can dress with royalty.</p>
+          </div>
+          <div class="value-card">
+            <div class="value-icon">🤝</div>
+            <h3>Community</h3>
+            <p>We support tailors, resellers and local creatives by supplying the fabrics that power their businesses.</p>
+          </div>
+          <div class="value-card">
+            <div class="value-icon">🚀</div>
+            <h3>Speed & Trust</h3>
+            <p>Quick replies on WhatsApp, honest availability updates, and dependable delivery always.</p>
+          </div>
+          <div class="value-card">
+            <div class="value-icon">🌍</div>
+            <h3>African Pride</h3>
+            <p>We celebrate Africa through every yard of fabric bold, beautiful, and unapologetically ours.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== CTA STRIP ===== -->
+    <section class="cta-strip">
+      <div class="wrap">
+        <h2>Ready to Wear Your Royalty?</h2>
+        <p>Browse our fabric ranges or reach out to us on WhatsApp, we reply fast and help you find the perfect fabric.</p>
+        <div class="btn-row">
+          <a class="btn" href="home.html#ranges">View Our Ranges</a>
+          <a class="btn btn-outline" href="contact.html">Contact Us</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer>
+    <div class="wrap foot-grid">
+      <div>
+        <h3>About Qinit Apparel</h3>
+        <p style="color:#b8c5e8; max-width:none;">Premium Ankara prints for those who value authenticity, sophistication and timeless style, without breaking the bank.</p>
+      </div>
+      <div>
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="home.html">Home</a></li>
+          <li><a href="home.html#ranges">Our Ranges</a></li>
+          <li><a href="About.html">About Us</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Follow Us</h3>
+        <ul>
+          <li><a href="https://instagram.com/qinitapparel">Instagram</a></li>
+          <li><a href="https://facebook.com/qinitapparel">Facebook</a></li>
+          <li><a href="https://wa.me/2347034673506">WhatsApp</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="copy">&copy; 2026 Qinit Apparel. All rights reserved. | www.qinitapparel.ng</div>
+  </footer>
+
+</body>
+</html>

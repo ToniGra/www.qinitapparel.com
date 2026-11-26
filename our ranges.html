@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Our Ranges | Qinit Apparel</title>
+  <meta name="description" content="Browse Qinit Apparel's fabric ranges — Big, Medium and Small. Premium Ankara prints for every occasion and budget.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* ========== 1. COLOURS ========== */
+    :root {
+      --blue:      #1c3f9e;
+      --blue-dark: #12296b;
+      --yellow:    #f6b900;
+      --white:     #ffffff;
+      --ash:       #eceeef;
+      --ash-dark:  #5c6166;
+      --text:      #1d2230;
+    }
+
+    /* ========== 2. BASICS ========== */
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: "DM Sans", Arial, sans-serif; color: var(--text); background: var(--white); line-height: 1.6; }
+    h1, h2, h3 { font-family: "Bricolage Grotesque", Arial, sans-serif; line-height: 1.1; }
+    a { color: inherit; }
+    .wrap { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+    :focus-visible { outline: 3px solid var(--yellow); outline-offset: 3px; }
+
+    /* ========== 3. TOP BAR ========== */
+    .topbar { background: var(--blue-dark); color: var(--ash); font-size: 0.9rem; }
+    .topbar .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 6px 20px; padding: 8px 20px; }
+    .topbar a { text-decoration: none; color: var(--yellow); }
+    .topbar a:hover { text-decoration: underline; }
+
+    /* ========== 4. HEADER / NAV ========== */
+    header {
+      background: var(--white);
+      border-bottom: 4px solid var(--yellow);
+      position: sticky; top: 0; z-index: 10;
+    }
+    .header-row {
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 10px; padding: 10px 20px;
+    }
+    .logo img { height: 52px; display: block; }
+    nav a {
+      text-decoration: none; font-weight: 700; margin-left: 22px;
+      color: var(--blue);
+    }
+    nav a:hover { color: var(--blue-dark); text-decoration: underline; text-decoration-color: var(--yellow); text-decoration-thickness: 3px; }
+    nav a[aria-current="page"] { text-decoration: underline; text-decoration-color: var(--yellow); text-decoration-thickness: 3px; }
+    .cart-link span { display: inline-block; min-width: 1.5em; text-align: center; }
+    .range-actions { display: flex; align-items: center; flex-wrap: wrap; gap: 10px; margin-top: auto; }
+    .range-actions .btn { margin-top: 0; }
+    button.btn { border: 0; cursor: pointer; font: inherit; }
+    .cart-notice { position: fixed; right: 20px; bottom: 20px; z-index: 20; padding: 12px 18px; border-radius: 5px; background: var(--blue-dark); color: var(--white); box-shadow: 0 3px 14px rgba(0,0,0,.2); }
+    .cart-notice:empty { display: none; }
+    .cart-notice.error { background: #a32626; }
+
+    /* ========== 5. PAGE BANNER ========== */
+    .banner {
+      background-color: var(--blue);
+      background-image:
+        radial-gradient(circle at center, var(--yellow) 0 12%, transparent 13%),
+        radial-gradient(circle at center, transparent 0 24%, var(--yellow) 25% 29%, transparent 30%),
+        radial-gradient(circle at center, transparent 0 40%, rgba(255,255,255,.15) 41% 44%, transparent 45%);
+      background-size: 90px 90px;
+      color: var(--white);
+      padding: 70px 0 56px;
+      position: relative;
+    }
+    .banner::after {
+      content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 16px;
+      background-image: radial-gradient(circle at 50% 100%, var(--yellow) 0 7px, transparent 8px);
+      background-size: 28px 16px;
+    }
+    .banner h1 { font-size: clamp(2.4rem, 5.5vw, 3.8rem); font-weight: 800; color: var(--white); }
+    .crumbs { margin-top: 10px; color: #d6defa; }
+    .crumbs a { color: var(--yellow); text-decoration: none; }
+    .crumbs a:hover { text-decoration: underline; }
+    .banner-sub { margin-top: 14px; color: #c8d4f5; max-width: 56ch; font-size: 1.1rem; }
+
+    /* ========== 6. SECTION LAYOUTS ========== */
+    .section     { padding: 72px 0; background: var(--white); }
+    .section-alt { padding: 72px 0; background: var(--ash); }
+
+    h2.section-heading {
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      color: var(--blue);
+      margin-bottom: 10px;
+    }
+    .intro { color: var(--ash-dark); max-width: 60ch; margin-bottom: 36px; }
+
+    /* ========== 7. RANGE CARDS (top 3-col grid) ========== */
+    .range-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .range-card {
+      background: var(--white);
+      border-radius: 8px;
+      overflow: hidden;
+      border-bottom: 5px solid var(--yellow);
+      display: flex; flex-direction: column;
+      box-shadow: 0 2px 14px rgba(28, 63, 158, 0.09);
+      transition: transform .2s, box-shadow .2s;
+    }
+    .range-card:hover { transform: translateY(-4px); box-shadow: 0 8px 24px rgba(28, 63, 158, 0.15); }
+    .range-card img { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; display: block; }
+    .range-body { padding: 24px; display: flex; flex-direction: column; flex: 1; }
+    .range-badge {
+      display: inline-block; background: var(--yellow); color: var(--blue-dark);
+      font-size: 0.75rem; font-weight: 700; letter-spacing: .06em;
+      padding: 3px 10px; border-radius: 20px; margin-bottom: 10px; text-transform: uppercase;
+    }
+    .range-body h3 { font-size: 1.5rem; color: var(--blue); margin-bottom: 8px; }
+    .range-body p  { color: var(--ash-dark); margin-bottom: 14px; }
+    .range-body .btn { margin-top: auto; align-self: flex-start; }
+
+    /* ========== 8. DETAIL ROWS (alternating) ========== */
+    .detail-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: center;
+      padding: 64px 0;
+      border-bottom: 1px solid var(--ash);
+    }
+    .detail-row:last-child { border-bottom: none; }
+    .detail-row.flip .detail-img { order: 2; }
+    .detail-row.flip .detail-text { order: 1; }
+    .detail-img img { width: 100%; border-radius: 8px; display: block; box-shadow: 0 4px 20px rgba(28,63,158,.12); }
+    .detail-text h2 { font-size: clamp(1.6rem, 3.5vw, 2.2rem); color: var(--blue); margin-bottom: 10px; }
+    .detail-text p  { color: var(--ash-dark); margin-bottom: 14px; max-width: 50ch; }
+    .tag-list { display: flex; flex-wrap: wrap; gap: 8px; margin: 16px 0 22px; }
+    .tag {
+      background: var(--ash); color: var(--blue-dark);
+      font-size: 0.82rem; font-weight: 700;
+      padding: 4px 12px; border-radius: 20px;
+    }
+
+    /* ========== 9. HOW TO ORDER STEPS ========== */
+    .steps-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; counter-reset: steps; }
+    .step {
+      background: var(--white);
+      border-radius: 8px; padding: 28px 22px;
+      border-top: 5px solid var(--yellow);
+      box-shadow: 0 2px 10px rgba(28,63,158,.08);
+      counter-increment: steps;
+    }
+    .step::before {
+      content: counter(steps);
+      display: flex; align-items: center; justify-content: center;
+      width: 42px; height: 42px;
+      background: var(--blue); color: var(--white);
+      font-family: "Bricolage Grotesque", Arial, sans-serif;
+      font-weight: 800; font-size: 1.2rem;
+      border-radius: 50%; margin-bottom: 14px;
+    }
+    .step h3 { font-size: 1.1rem; color: var(--blue); margin-bottom: 8px; }
+    .step p  { color: var(--ash-dark); font-size: 0.95rem; }
+
+    /* ========== 10. FAQ ========== */
+    .faq-list { margin-top: 24px; }
+    details {
+      border-bottom: 1px solid var(--ash);
+      padding: 18px 0;
+    }
+    summary {
+      font-weight: 700; color: var(--blue); cursor: pointer;
+      list-style: none; display: flex; justify-content: space-between; align-items: center;
+      font-size: 1.05rem;
+    }
+    summary::-webkit-details-marker { display: none; }
+    summary::after { content: "+"; font-size: 1.4rem; color: var(--yellow); transition: transform .2s; }
+    details[open] summary::after { content: "−"; }
+    details p { margin-top: 12px; color: var(--ash-dark); max-width: 65ch; }
+
+    /* ========== 11. CTA STRIP ========== */
+    .cta-strip { background: var(--yellow); padding: 60px 0; text-align: center; }
+    .cta-strip h2 { color: var(--blue-dark); font-size: clamp(1.8rem,4vw,2.4rem); margin-bottom: 12px; }
+    .cta-strip p  { color: var(--blue-dark); margin: 0 auto 26px; max-width: 54ch; }
+    .btn-row { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+
+    /* ========== 12. BUTTONS ========== */
+    .btn {
+      display: inline-block; background: var(--yellow); color: var(--blue-dark);
+      font-weight: 700; padding: 14px 28px; border-radius: 4px; text-decoration: none;
+    }
+    .btn:hover { background: var(--blue); color: var(--white); }
+    .btn-blue { background: var(--blue); color: var(--white); }
+    .btn-blue:hover { background: var(--blue-dark); color: var(--white); }
+    .btn-outline { background: transparent; border: 3px solid var(--blue-dark); color: var(--blue-dark); }
+    .btn-outline:hover { background: var(--blue-dark); color: var(--white); }
+    .btn-white { background: var(--white); color: var(--blue-dark); }
+    .btn-white:hover { background: var(--ash); color: var(--blue-dark); }
+
+    /* ========== 13. FOOTER ========== */
+    footer { background: var(--blue-dark); color: var(--ash); border-top: 4px solid var(--yellow); }
+    .foot-grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 30px; padding: 44px 20px 30px; }
+    footer h3 { color: var(--yellow); font-size: 1.1rem; margin-bottom: 12px; }
+    footer ul { list-style: none; }
+    footer li { margin-bottom: 6px; }
+    footer a { text-decoration: none; }
+    footer a:hover { color: var(--yellow); }
+    .copy { text-align: center; padding: 18px 20px; border-top: 1px solid rgba(255,255,255,.15); font-size: 0.9rem; }
+
+    /* ========== 14. RESPONSIVE ========== */
+    @media (max-width: 900px) {
+      .steps-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 800px) {
+      .range-grid { grid-template-columns: 1fr; }
+      .detail-row { grid-template-columns: 1fr; gap: 28px; }
+      .detail-row.flip .detail-img,
+      .detail-row.flip .detail-text { order: unset; }
+      .foot-grid { grid-template-columns: 1fr; }
+      nav a { margin: 0 14px 0 0; }
+      .section, .section-alt { padding: 52px 0; }
+    }
+    @media (max-width: 540px) {
+      .steps-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+  <link rel="stylesheet" href="banner.css">
+</head>
+<body>
+
+  <!-- ===== TOP BAR ===== -->
+  <div class="topbar">
+    <div class="wrap">
+      <span>Email: <a href="mailto:ojoinioluwablessing2016@gmail.com">ojoinioluwablessing2016@gmail.com</a></span>
+      <span>WhatsApp: <a href="https://wa.me/2347034673506">+234 703 467 3506</a></span>
+    </div>
+  </div>
+
+  <!-- ===== HEADER ===== -->
+  <header>
+    <div class="wrap header-row">
+      <a class="logo" href="home.html" aria-label="Qinit Apparel home">
+        <img src="QinitApparel.png" alt="Qinit Apparel">
+      </a>
+      <nav aria-label="Main navigation">
+        <a href="home.html">Home</a>
+        <a href="our ranges.html" aria-current="page">Our Ranges</a>
+        <a href="About.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a class="cart-link" href="cart.html">Cart (<span data-cart-count>0</span>)</a>
+        <a href="index.html">Sign Up / Log In</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ===== BANNER ===== -->
+    <section class="banner">
+      <div class="wrap">
+        <h1>Our Fabric Ranges</h1>
+        <p class="crumbs"><a href="home.html">Home</a> / Our Ranges</p>
+        <p class="banner-sub">From large event orders to small creative projects — we have the right Ankara fabric for you, at a price that makes sense.</p>
+      </div>
+    </section>
+
+    <!-- ===== QUICK OVERVIEW CARDS ===== -->
+    <section class="section">
+      <div class="wrap">
+        <h2 class="section-heading">Choose Your Range</h2>
+        <p class="intro">Pick the size that fits your plan — whether it is a full event, a special outfit, or a small project.</p>
+
+        <div class="range-grid">
+
+          <!-- Big Range -->
+          <article class="range-card">
+            <img src="Big.jpg" alt="Big range Ankara fabric" width="400" height="400">
+            <div class="range-body">
+              <span class="range-badge">Best for Events</span>
+              <h3>Big Range</h3>
+              <p>Large quantities for weddings, aso ebi, uniforms and resellers.</p>
+              <div class="range-actions">
+                <a class="btn" href="#big-range">See Details</a>
+                <a class="btn btn-blue" href="big-ranges.html">Shop Big Fabrics</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Medium Range -->
+          <article class="range-card">
+            <img src="Medium.jpg" alt="Medium range Ankara fabric" width="400" height="400">
+            <div class="range-body">
+              <span class="range-badge">Most Popular</span>
+              <h3>Medium Range</h3>
+              <p>The right amount for a full outfit or a small group. Perfect for families, couples and fashion designers.</p>
+              <div class="range-actions">
+                <a class="btn" href="#medium-range">See Details</a>
+                <a class="btn btn-blue" href="medium-ranges.html">Shop Medium Fabrics</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Small Range -->
+          <article class="range-card">
+            <img src="Small.jpg" alt="Small range Ankara fabric" width="400" height="400">
+            <div class="range-body">
+              <span class="range-badge">Try Before You Buy</span>
+              <h3>Small Range</h3>
+              <p>Short lengths for bags, headwraps, accessories and trial orders. Great for exploring new patterns.</p>
+              <div class="range-actions">
+                <a class="btn" href="#small-range">See Details</a>
+                <a class="btn btn-blue" href="small-ranges.html">Shop Small Fabrics</a>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== DETAILED RANGE SECTIONS ===== -->
+    <section class="section-alt" id="range-details">
+      <div class="wrap">
+
+        <!-- BIG RANGE -->
+        <div class="detail-row" id="big-range">
+          <div class="detail-img">
+            <img src="Big.jpg" alt="Big Range Ankara fabric — large bulk order" width="550" height="550">
+          </div>
+          <div class="detail-text">
+            <span class="range-badge">Big Range</span>
+            <h2>Large Quantities, Unbeatable Value</h2>
+            <p>Our Big Range is designed for anyone who needs fabric in bulk — weddings, aso ebi groups, school or workplace uniforms, and professional resellers.</p>
+            <p>We work closely with event planners and tailors to ensure your order arrives on time, in the exact pattern and colour you need.</p>
+            <div class="tag-list">
+              <span class="tag">Weddings</span>
+              <span class="tag">Aso Ebi</span>
+              <span class="tag">Uniforms</span>
+              <span class="tag">Resellers</span>
+              <span class="tag">Bulk Orders</span>
+              <span class="tag">Event Planners</span>
+            </div>
+            <div class="range-actions">
+              <a class="btn btn-blue" href="big-ranges.html">Shop Big Fabrics</a>
+              <a class="btn btn-outline" href="contact.html">Ask About the Big Range</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- MEDIUM RANGE -->
+        <div class="detail-row flip" id="medium-range">
+          <div class="detail-img">
+            <img src="Medium.jpg" alt="Medium Range Ankara fabric — full outfit" width="550" height="550">
+          </div>
+          <div class="detail-text">
+            <span class="range-badge">Medium Range</span>
+            <h2>The Perfect Amount for a Complete Look</h2>
+            <p>The Medium Range gives you just the right quantity for a full outfit or a coordinated look for a small group — couples, siblings, or close friends who want to match.</p>
+            <p>Favoured by fashion designers and tailors, this range balances quality and quantity at a price point that works for personal orders and small collections.</p>
+            <div class="tag-list">
+              <span class="tag">Full Outfits</span>
+              <span class="tag">Couples</span>
+              <span class="tag">Family Matching</span>
+              <span class="tag">Fashion Designers</span>
+              <span class="tag">Tailors</span>
+            </div>
+            <div class="range-actions">
+              <a class="btn btn-blue" href="medium-ranges.html">Shop Medium Fabrics</a>
+              <a class="btn btn-outline" href="contact.html">Ask About the Medium Range</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- SMALL RANGE -->
+        <div class="detail-row" id="small-range">
+          <div class="detail-img">
+            <img src="Small.jpg" alt="Small Range Ankara fabric — accessories and headwraps" width="550" height="550">
+          </div>
+          <div class="detail-text">
+            <span class="range-badge">Small Range</span>
+            <h2>Explore Patterns Without Commitment</h2>
+            <p>Short lengths are perfect for accessories, bags, headwraps, and creative projects — or simply to test a new pattern before placing a larger order.</p>
+            <p>The Small Range is also popular with craft makers, students, and customers who want to try Qinit Apparel for the first time before committing to a bigger purchase.</p>
+            <div class="tag-list">
+              <span class="tag">Headwraps</span>
+              <span class="tag">Bags</span>
+              <span class="tag">Accessories</span>
+              <span class="tag">Craft Projects</span>
+              <span class="tag">Trial Orders</span>
+              <span class="tag">First-Time Buyers</span>
+            </div>
+            <div class="range-actions">
+              <a class="btn btn-blue" href="small-ranges.html">Shop Small Fabrics</a>
+              <a class="btn btn-outline" href="contact.html">Ask About the Small Range</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===== HOW TO ORDER ===== -->
+    <section class="section">
+      <div class="wrap">
+        <h2 class="section-heading">How to Order</h2>
+        <p class="intro">Getting your Ankara fabric from Qinit Apparel is simple and fast. Here is how it works:</p>
+        <div class="steps-grid">
+          <div class="step">
+            <h3>Choose Your Range</h3>
+            <p>Decide whether you need the Big, Medium or Small range based on your project size.</p>
+          </div>
+          <div class="step">
+            <h3>Contact Us</h3>
+            <p>Reach out via WhatsApp, phone or email and tell us the range, pattern preference and quantity you need.</p>
+          </div>
+          <div class="step">
+            <h3>Confirm Availability</h3>
+            <p>We check our stock and send you photos of available prints and confirm pricing quickly.</p>
+          </div>
+          <div class="step">
+            <h3>Receive Your Fabric</h3>
+            <p>Pick up from our shop in Akure or arrange delivery. Your premium Ankara fabric is on its way!</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FAQ ===== -->
+    <section class="section-alt">
+      <div class="wrap">
+        <h2 class="section-heading">Frequently Asked Questions</h2>
+        <p class="intro">Have a question? Here are answers to the ones we hear most often.</p>
+        <div class="faq-list">
+          <details open>
+            <summary>What is the minimum order for the Big Range?</summary>
+            <p>The Big Range is designed for large orders — typically suited for aso ebi groups, weddings, or resellers. Contact us on WhatsApp for exact minimum yard requirements and pricing.</p>
+          </details>
+          <details>
+            <summary>Can I see the fabric before ordering?</summary>
+            <p>Yes! You can visit our shop at Millennium Oda Road, Akure, Ondo State to see and feel the fabrics in person. We also send photos on WhatsApp to help you decide.</p>
+          </details>
+          <details>
+            <summary>Do you offer delivery outside Akure?</summary>
+            <p>Yes, we can arrange delivery to other locations in Nigeria. Contact us to discuss delivery options and costs for your area.</p>
+          </details>
+          <details>
+            <summary>Can I mix patterns in a single order?</summary>
+            <p>Absolutely. Many customers mix patterns — especially for aso ebi where the main and complementary fabric are different. Just let us know what you have in mind.</p>
+          </details>
+          <details>
+            <summary>How long does it take to process an order?</summary>
+            <p>We respond to WhatsApp messages quickly — usually within the same business day. Processing and availability confirmation is usually done within 24 hours.</p>
+          </details>
+          <details>
+            <summary>Do you sell to resellers and tailors?</summary>
+            <p>Yes! We love working with tailors, fashion designers and fabric resellers. The Big Range especially is priced to support your business. Reach out to discuss trade pricing.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== CTA STRIP ===== -->
+    <section class="cta-strip">
+      <div class="wrap">
+        <h2>Ready to Order Your Fabric?</h2>
+        <p>Tell us your range and quantity — we reply fast and help you find the perfect Ankara print for your occasion.</p>
+        <div class="btn-row">
+          <a class="btn btn-blue" href="https://wa.me/2347034673506">Chat on WhatsApp</a>
+          <a class="btn btn-outline" href="contact.html">Send Us a Message</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer>
+    <div class="wrap foot-grid">
+      <div>
+        <h3>About Qinit Apparel</h3>
+        <p style="color:#b8c5e8; max-width:none;">Premium Ankara prints for those who value authenticity, sophistication and timeless style, without breaking the bank.</p>
+      </div>
+      <div>
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="home.html">Home</a></li>
+          <li><a href="our ranges.html">Our Ranges</a></li>
+          <li><a href="About.html">About Us</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Follow Us</h3>
+        <ul>
+          <li><a href="https://instagram.com/yourhandle">Instagram</a></li>
+          <li><a href="https://facebook.com/yourpage">Facebook</a></li>
+          <li><a href="https://wa.me/2347034673506">WhatsApp</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="copy">&copy; 2026 Qinit Apparel. All rights reserved. | www.qinitapparel.ng</div>
+  </footer>
+  <div class="cart-notice" data-cart-status role="status" aria-live="polite"></div>
+  <script src="range-products.js"></script>
+  <script src="cart.js"></script>
+</body>
+</html>

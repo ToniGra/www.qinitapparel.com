@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Qinit Apparel | Premium Ankara Fabrics</title>
+  <meta name="description" content="Premium Ankara prints for every occasion. Step into elegance, wear your royalty.">
+
+  <!-- Fonts from Google (the page still works if they fail to load) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* ========== 1. COLOURS (change them here, once) ========== */
+    :root {
+      --blue: #1c3f9e;
+      --blue-dark: #12296b;
+      --yellow: #f6b900;
+      --white: #ffffff;
+      --ash: #eceeef;
+      --ash-dark: #5c6166;
+      --text: #1d2230;
+    }
+
+    /* ========== 2. BASIC SETTINGS ========== */
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: "DM Sans", Arial, sans-serif;
+      color: var(--text);
+      background: var(--white);
+      line-height: 1.6;
+    }
+    h1, h2, h3 {
+      font-family: "Bricolage Grotesque", Arial, sans-serif;
+      line-height: 1.1;
+    }
+    a { color: inherit; }
+    .wrap { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+    section { padding: 72px 0; }
+    :focus-visible { outline: 3px solid var(--yellow); outline-offset: 3px; }
+
+    /* ========== 3. HEADER AND MENU ========== */
+    header {
+      background: var(--white);
+      border-bottom: 4px solid var(--yellow);
+      position: sticky; top: 0; z-index: 10;
+    }
+    .header-row {
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 10px; padding: 10px 20px;
+    }
+    .logo img { height: 52px; display: block; }  /* your logo file */
+    nav a {
+      text-decoration: none; font-weight: 700; margin-left: 22px;
+      color: var(--blue);
+    }
+    nav a:hover { color: var(--blue-dark); text-decoration: underline; text-decoration-color: var(--yellow); text-decoration-thickness: 3px; }
+
+    nav a[aria-current="page"] { text-decoration: underline; text-decoration-color: var(--yellow); text-decoration-thickness: 3px; }
+
+    /* ========== 4. HOME: HERO ========== */
+    .hero { color: var(--white); padding: 70px 0 56px; position: relative; }
+    .hero-grid { display: block; }
+    .hero-text { max-width: 740px; }
+    .hero-text h1 { font-size: clamp(2.4rem, 5.5vw, 3.8rem); font-weight: 800; color: var(--white); }
+    .hero-text p { margin: 10px 0 30px; max-width: 56ch; color: #c8d4f5; font-size: 1.1rem; }
+    .btn {
+      display: inline-block; background: var(--yellow); color: var(--blue-dark);
+      font-weight: 700; padding: 14px 28px; border-radius: 4px; text-decoration: none;
+    }
+    .btn:hover { background: var(--blue); color: var(--white); }
+
+    /* ========== 5. HOME: THE THREE RANGES ========== */
+    .ranges h2, .about h2, .contact h2 { font-size: clamp(1.8rem, 4vw, 2.6rem); color: var(--blue); }
+    .intro { margin: 10px 0 36px; color: var(--ash-dark); max-width: 60ch; }
+    .range-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .range-card { background: var(--ash); border-radius: 6px; overflow: hidden; border-bottom: 5px solid var(--yellow); display: flex; flex-direction: column; }
+    .range-card img { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; display: block; }
+    .range-body { padding: 22px; display: flex; flex-direction: column; flex: 1; }
+    .range-body h3 { font-size: 1.5rem; color: var(--blue); margin-bottom: 8px; }
+    .range-body p { color: var(--ash-dark); margin-bottom: 16px; }
+    .range-body .range-price { color: var(--blue-dark); font-weight: 700; }
+    .range-body a { font-weight: 700; color: var(--blue); margin-top: auto; }
+    .range-body .btn { align-self: flex-start; border: 0; cursor: pointer; font: inherit; margin-top: auto; }
+    .cart-link span { display: inline-block; min-width: 1.5em; text-align: center; }
+    .cart-notice { position: fixed; right: 20px; bottom: 20px; z-index: 20; padding: 12px 18px; border-radius: 5px; background: var(--blue-dark); color: var(--white); box-shadow: 0 3px 14px rgba(0,0,0,.2); }
+    .cart-notice:empty { display: none; }
+    .cart-notice.error { background: #a32626; }
+
+    /* ========== 6. ABOUT ========== */
+    .about { background: var(--blue); color: var(--white); background-size: cover; background-position: center; }
+    .about h2 { color: var(--yellow); }
+    .about h3 { font-size: 1.3rem; margin: 6px 0 18px; }
+    .about p { max-width: 62ch; margin-bottom: 14px; color: #e6ebf8; }
+    .about-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 40px; align-items: center; }
+    .about img { width: 100%; height: auto; border-radius: 6px; display: block; }
+     
+
+    /* ========== 7. CONTACT ========== */
+    .contact-list { margin-top: 24px; list-style: none; }
+    .contact-list li { padding: 14px 0; border-bottom: 1px solid var(--ash); }
+    .contact-list strong { display: inline-block; min-width: 110px; color: var(--blue); }
+    .contact-list a { color: var(--text); }
+
+    /* ========== 8. FOOTER ========== */
+    footer { background: var(--blue-dark); color: var(--ash); text-align: center; padding: 28px 20px; font-size: 0.9rem; border-top: 4px solid var(--yellow); }
+
+    /* ========== 9. PHONES AND SMALL SCREENS ========== */
+    @media (max-width: 800px) {
+      .hero-grid, .about-grid, .range-grid { grid-template-columns: 1fr; }
+      .hero-text { padding: 0; }
+      nav a { margin: 0 14px 0 0; }
+      section { padding: 52px 0; }
+    }
+  </style>
+  <link rel="stylesheet" href="banner.css">
+</head>
+
+<body>
+
+  <!-- ========== HEADER ========== -->
+  <header>
+    <div class="wrap header-row">
+      <!-- Put your logo file (QinitApparel.png) in the same folder as this page -->
+      <a class="logo" href="home.html" aria-label="Qinit Apparel home"><img src="QinitApparel.png" alt="Qinit Apparel"></a>
+      <nav aria-label="Main navigation">
+        <a href="home.html" aria-current="page">Home</a>
+        <a href="our ranges.html">Our Ranges</a>
+        <a href="About.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a class="cart-link" href="cart.html">Cart (<span data-cart-count>0</span>)</a>
+        <a href="index.html">Sign Up / Log In</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ========== HOME ========== -->
+    <section class="hero banner" id="home">
+      <div class="wrap hero-grid">
+        <div class="hero-text">
+          <h1>Step into Elegance, Wear Your Royalty.</h1>
+          <p>Premium Ankara prints for those who value authenticity, sophistication and timeless style, at prices that stay kind to your pocket.</p>
+          <a class="btn" href="our ranges.html">Shop our ranges</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== THE THREE RANGES ========== -->
+    <section class="ranges" id="ranges">
+      <div class="wrap">
+        <h2>Choose your range</h2>
+        <p class="intro">Pick the size that fits your plan, whether it is a full event, a special outfit or a small project.</p>
+
+        <div class="range-grid">
+          <article class="range-card">
+            <img src="Big.jpg" alt="Big range Ankara fabric" width="400" height="400">
+            <div class="range-body">
+              <h3>Big Range</h3>
+              <p>Large quantities for weddings, aso ebi, uniforms and resellers.</p>
+              <p class="range-price">₦14,000 / fabric piece</p>
+              <button class="btn add-to-cart" type="button" data-product-id="big-range" data-product-name="Big Range" data-product-image="Big.jpg">Add Assorted Piece</button>
+              <a href="contact.html">Ask about the Big Range</a>
+            </div>
+          </article>
+
+          <article class="range-card">
+            <img src="Medium.jpg" alt="Medium range Ankara fabric" width="400" height="400">
+            <div class="range-body">
+              <h3>Medium Range</h3>
+              <p>The right amount for a full outfit or a group of friends and family.</p>
+              <p class="range-price">₦6,000 / fabric piece</p>
+              <button class="btn add-to-cart" type="button" data-product-id="medium-range" data-product-name="Medium Range" data-product-image="Medium.jpg">Add Assorted Piece</button>
+              <a href="contact.html">Ask about the Medium Range</a>
+            </div>
+          </article>
+
+          <article class="range-card">
+            <img src="Small.jpg" alt="Small range Ankara fabric" width="400" height="400">
+            <div class="range-body">
+              <h3>Small Range</h3>
+              <p>Short lengths for bags, headwraps, accessories and trial orders.</p>
+              <p class="range-price">₦4,000 / fabric piece</p>
+              <button class="btn add-to-cart" type="button" data-product-id="small-range" data-product-name="Small Range" data-product-image="Small.jpg">Add Assorted Piece</button>
+              <a href="contact.html">Ask about the Small Range</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== ABOUT US ========== -->
+    <section class="about" id="about">
+      <div class="wrap about-grid">
+        <div>
+          <h2>About Us</h2>
+          <h3>Welcome to Qinit Apparel</h3>
+          <p>Step into Elegance, Wear Your Royalty.</p>
+          <p>Discover an exquisite collection of premium Ankara prints, crafted for those who value authenticity, sophistication, and timeless style. From vibrant statement patterns to subtle, high-grade weaves, we offer top-tier African fabrics tailored to elevate every occasion without breaking the bank.</p>
+          <a class="btn" href="About.html">Read more about us</a>
+        </div>
+        <img src="AboutUs.jpg" alt="Qinit Apparel Ankara fabrics" width="500" height="500">
+      </div>
+    </section>
+
+    <!-- ========== CONTACT ========== -->
+    <section class="contact" id="contact">
+      <div class="wrap">
+        <h2>Contact Us</h2>
+        <p class="intro">Tell us the range and the quantity you want and we will reply with what is available.</p>
+
+        <!-- REPLACE these example details with your real ones -->
+        <ul class="contact-list">
+          <li><strong>WhatsApp</strong> <a href="https://wa.me/2347034673506">+234 703 467 3506</a></li>
+          <li><strong>Email</strong> <a href="mailto:ojoinioluwablessing2016@gmail.com">ojoinioluwablessing2016@gmail.com</a></li>
+          <li><strong>Instagram</strong> <a href="https://instagram.com/qinitapparel">@qinitapparel</a></li>
+          <li><strong>Location</strong> Millennium Oda Road, Akure, Ondo State, Nigeria</li>
+        </ul>
+        <p style="margin-top:24px"><a class="btn" href="contact.html">Go to our Contact page</a></p>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ========== FOOTER ========== -->
+  <footer>
+    &copy; 2026 Qinit Apparel. All rights reserved. | www.qinitapparel.ng
+  </footer>
+
+  <div class="cart-notice" data-cart-status role="status" aria-live="polite"></div>
+  <script src="../range-products.js"></script>
+  <script src="../cart.js"></script>
+</body>
+</html>

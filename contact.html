@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Contact Us | Qinit Apparel</title>
+  <meta name="description" content="Contact Qinit Apparel for premium Ankara fabrics.">
+    <!-- Fonts from Google (the page still works if they fail to load) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* ===== 1. COLOURS (same as the home page) ===== */
+    :root {
+      --blue: #1c3f9e;
+      --blue-dark: #12296b;
+      --yellow: #f6b900;
+      --white: #ffffff;
+      --ash: #eceeef;
+      --ash-dark: #5c6166;
+      --text: #1d2230;
+    }
+
+    /* ===== 2. BASICS ===== */
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: "DM Sans", Arial, sans-serif; color: var(--text); background: var(--ash); line-height: 1.6; }
+    h1, h2, h3 { font-family: "Bricolage Grotesque", Arial, sans-serif; line-height: 1.15; color: var(--blue); }
+    a { color: inherit; }
+    .wrap { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+    :focus-visible { outline: 3px solid var(--yellow); outline-offset: 3px; }
+
+    /* ===== 3. TOP BAR + HEADER ===== */
+    .topbar { background: var(--blue-dark); color: var(--ash); font-size: 0.9rem; }
+    .topbar .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 6px 20px; padding-top: 8px; padding-bottom: 8px; }
+    .topbar a { text-decoration: none; }
+    header { background: var(--white); border-bottom: 4px solid var(--yellow); position: sticky; top: 0; z-index: 10; }
+    .header-row { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; padding: 10px 20px; }
+    .logo img { height: 52px; display: block; }
+    nav a { text-decoration: none; font-weight: 700; margin-left: 22px; color: var(--blue); }
+    nav a:hover, nav a[aria-current="page"] { text-decoration: underline; text-decoration-color: var(--yellow); text-decoration-thickness: 3px; }
+
+    /* ===== 4. PAGE BANNER ===== */
+    .banner { background-color: var(--blue); color: var(--white); padding: 56px 0 48px; position: relative; overflow: hidden; }
+    .banner::after {  /* pattern strip along the bottom */
+      content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 16px;
+      background-image: radial-gradient(circle at 50% 100%, var(--yellow) 0 7px, transparent 8px);
+      background-size: 28px 16px;
+    }
+    .banner h1 { color: var(--white); font-size: clamp(2.2rem, 5vw, 3.4rem); font-weight: 800; }
+    .crumbs { margin-top: 8px; color: #d6defa; }
+    .crumbs a { color: var(--yellow); }
+
+    /* ===== 5. INFO CARDS ===== */
+    .section-title { text-align: center; margin: 56px 0 28px; font-size: clamp(1.7rem, 4vw, 2.4rem); }
+    .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+    .card { background: var(--white); border-radius: 6px; padding: 26px; border-top: 5px solid var(--yellow); box-shadow: 0 2px 10px rgba(18, 41, 107, 0.08); }
+    .card h3 { font-size: 1.3rem; margin-bottom: 10px; }
+    .card p { color: var(--ash-dark); }
+    .card strong { color: var(--text); }
+
+    /* ===== 6. BRANCH TABLE ===== */
+    .table-box { background: var(--white); border-radius: 6px; overflow-x: auto; box-shadow: 0 2px 10px rgba(18, 41, 107, 0.08); margin-top: 22px; }
+    table { width: 100%; border-collapse: collapse; }
+    th { background: var(--blue); color: var(--white); text-align: left; padding: 14px 18px; }
+    td { padding: 14px 18px; border-bottom: 1px solid var(--ash); }
+    tr:nth-child(even) td { background: #f7f8f8; }
+
+    /* ===== 7. MESSAGE FORM + QUICK LINKS ===== */
+    .two-col { display: grid; grid-template-columns: 1.4fr 1fr; gap: 22px; margin-top: 22px; }
+    form { background: var(--white); border-radius: 6px; padding: 28px; box-shadow: 0 2px 10px rgba(18, 41, 107, 0.08); }
+    label { display: block; font-weight: 700; margin: 14px 0 6px; color: var(--blue); }
+    input[type="text"], input[type="email"], input[type="tel"], textarea {
+      width: 100%; padding: 12px 14px; border: 2px solid var(--ash); border-radius: 4px;
+      font: inherit; background: var(--white);
+    }
+    input:focus, textarea:focus { border-color: var(--blue); outline: none; }
+    textarea { min-height: 130px; resize: vertical; }
+    .agree { display: flex; gap: 10px; align-items: flex-start; font-weight: 400; color: var(--ash-dark); margin-top: 16px; }
+    .agree input { margin-top: 5px; }
+    button, .btn {
+      display: inline-block; background: var(--yellow); color: var(--blue-dark); font: inherit; font-weight: 700;
+      padding: 14px 30px; border: 0; border-radius: 4px; cursor: pointer; text-decoration: none; margin-top: 18px;
+    }
+    button:hover, .btn:hover { background: var(--blue); color: var(--white); }
+    .quick { display: grid; gap: 22px; align-content: start; }
+    .quick .card .btn { padding: 10px 20px; margin-top: 12px; }
+
+    /* ===== 8. FOOTER ===== */
+    footer { background: var(--blue-dark); color: var(--ash); margin-top: 64px; border-top: 4px solid var(--yellow); }
+    .foot-grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 30px; padding: 44px 20px 30px; }
+    footer h3 { color: var(--yellow); font-size: 1.1rem; margin-bottom: 12px; }
+    footer ul { list-style: none; }
+    footer li { margin-bottom: 6px; }
+    footer a { text-decoration: none; }
+    footer a:hover { color: var(--yellow); }
+    .copy { text-align: center; padding: 18px 20px; border-top: 1px solid rgba(255, 255, 255, 0.15); font-size: 0.9rem; }
+
+    /* ===== 9. PHONES ===== */
+    @media (max-width: 800px) {
+      .cards, .two-col, .foot-grid { grid-template-columns: 1fr; }
+      nav a { margin: 0 14px 0 0; }
+    }
+  </style>
+  <link rel="stylesheet" href="banner.css">
+</head>
+
+<body>
+
+  <!-- ===== TOP BAR (REPLACE the example details) ===== -->
+  <div class="topbar">
+    <div class="wrap">
+      <span>Email us: <a href="mailto:ojoinioluwablessing2016@gmail.com">ojoinioluwablessing2016@gmail.com</a></span>
+      <span>Call or WhatsApp: <a href="tel:+2347034673506">+234 703 467 3506</a></span>
+    </div>
+  </div>
+
+  <!-- ===== HEADER ===== -->
+  <header>
+    <div class="wrap header-row">
+      <a class="logo" href="home.html"><img src="QinitApparel.png" alt="Qinit Apparel"></a>
+      <nav>
+        <a href="home.html">Home</a>
+        <a href="our ranges.html">Our Ranges</a>
+        <a href="About.html">About</a>
+        <a href="contact.html" aria-current="page">Contact</a>
+        <a href="cart.html">Cart</a>
+        <a href="index.html">Sign Up / Log In</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ===== BANNER ===== -->
+    <section class="banner">
+      <div class="wrap">
+        <h1>Contact Us</h1>
+        <p class="crumbs"><a href="home.html">Home</a> / Contact Us</p>
+      </div>
+    </section>
+
+    <div class="wrap">
+
+      <!-- ===== THREE INFO CARDS ===== -->
+      <h2 class="section-title">We Love to Hear From You</h2>
+      <div class="cards">
+        <div class="card">
+          <h3>Our Shop</h3>
+          <p><strong>Qinit Apparel</strong><br>Millennium Oda Road, Akure,<br>Ondo State, Nigeria</p>
+        </div>
+        <div class="card">
+          <h3>Contact Information</h3>
+          <p>Phone: +234 703 467 3506<br>Email: ojoinioluwablessing2016@gmail.com<br>Instagram: @qinitapparel</p>
+        </div>
+        <div class="card">
+          <h3>Business Hours</h3>
+          <p><strong>Monday to Friday:</strong> 8am to 5pm<br><strong>Saturday:</strong> 10am to 4pm<br><strong>Sunday:</strong> 2pm to 6pm</p>
+        </div>
+      </div>
+
+      <!-- ===== MESSAGE FORM + QUICK LINKS ===== -->
+      <h2 class="section-title">Leave a Message</h2>
+      <div class="two-col">
+
+        <!-- This form opens the visitor's email app with the message ready to send.
+             Change the email address in "action" to yours. -->
+        <form action="mailto:ojoinioluwablessing2016@gmail.com" method="post" enctype="text/plain">
+          <label for="name">Your name</label>
+          <input type="text" id="name" name="Name" required>
+
+          <label for="email">Email address</label>
+          <input type="email" id="email" name="Email" required>
+
+          <label for="phone">Phone number</label>
+          <input type="tel" id="phone" name="Phone">
+
+          <label for="msg">Your message</label>
+          <textarea id="msg" name="Message" placeholder="Tell us the range and quantity you want" required></textarea>
+
+          <label class="agree"><input type="checkbox" required> I agree to the Privacy Policy of Qinit Apparel.</label>
+          <button type="submit">Send Message</button>
+        </form>
+
+        <div class="quick">
+          <div class="card">
+            <h3>Order on WhatsApp</h3>
+            <p>The fastest way to check what is in stock.</p>
+            <a class="btn" href="https://wa.me/2347034673506">Chat with us</a>
+          </div>
+          <div class="card">
+            <h3>Give Us a Call</h3>
+            <p><a href="tel:+2347034673506">+234 703 467 3506</a></p>
+          </div>
+          <div class="card">
+            <h3>Email Us</h3>
+            <p><a href="mailto:ojoinioluwablessing2016@gmail.com">ojoinioluwablessing2016@gmail.com</a></p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  <p style="text-align:center; margin-top:48px"><a class="btn" href="home.html">&larr; Back to Home</a></p>
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer>
+    <div class="wrap foot-grid">
+      <div>
+        <h3>About Qinit Apparel</h3>
+        <p>Premium Ankara prints for those who value authenticity, sophistication and timeless style, without breaking the bank.</p>
+      </div>
+      <div>
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="home.html">Home</a></li>
+          <li><a href="our ranges.html">Our Ranges</a></li>
+          <li><a href="About.html">About Us</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Follow Us</h3>
+        <ul>
+          <li><a href="https://instagram.com/qinitapparel">Instagram</a></li>
+          <li><a href="https://facebook.com/qinitapparel">Facebook</a></li>
+          <li><a href="https://tiktok.com/qinitapparel">Tiktok</a></li>
+          <li><a href="https://wa.me/2347034673506">WhatsApp</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="copy">&copy; 2026 Qinit Apparel. All rights reserved. | www.qinitapparel.ng</div>
+  </footer>
+
+</body>
+</html>

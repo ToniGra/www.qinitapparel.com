@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Your Cart | Qinit Apparel</title>
+  <meta name="description" content="Review your Qinit Apparel fabric selections and send an order request.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --blue: #1c3f9e;
+      --blue-dark: #12296b;
+      --yellow: #f6b900;
+      --white: #ffffff;
+      --ash: #eceeef;
+      --ash-dark: #5c6166;
+      --text: #1d2230;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: "DM Sans", Arial, sans-serif; color: var(--text); background: var(--ash); line-height: 1.6; }
+    h1, h2, h3 { font-family: "Bricolage Grotesque", Arial, sans-serif; line-height: 1.15; }
+    a { color: inherit; }
+    button, a { -webkit-tap-highlight-color: transparent; }
+    :focus-visible { outline: 3px solid var(--yellow); outline-offset: 3px; }
+    .wrap { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+    header { background: var(--white); border-bottom: 4px solid var(--yellow); position: sticky; top: 0; z-index: 10; }
+    .header-row { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; padding: 10px 20px; }
+    .logo img { height: 52px; display: block; }
+    nav { display: flex; align-items: center; flex-wrap: wrap; gap: 18px; }
+    nav a { color: var(--blue); font-weight: 700; text-decoration: none; }
+    nav a:hover, nav a[aria-current="page"] { text-decoration: underline; text-decoration-color: var(--yellow); text-decoration-thickness: 3px; }
+    .banner { background: var(--blue); color: var(--white); padding: 54px 0; }
+    .banner h1 { font-size: clamp(2.2rem, 5vw, 3.4rem); }
+    .banner p { color: #d6defa; margin-top: 10px; }
+    main { padding: 56px 0 72px; }
+    .cart-layout { display: grid; grid-template-columns: minmax(0, 1fr) 320px; gap: 28px; align-items: start; }
+    .cart-list, .order-summary { background: var(--white); border-radius: 8px; box-shadow: 0 2px 12px rgba(18, 41, 107, .08); }
+    .cart-list { padding: 24px; }
+    .cart-tabs { display: flex; gap: 8px; border-bottom: 2px solid var(--ash); margin: -4px 0 22px; }
+    .cart-tab { padding: 10px 16px; border: 0; border-bottom: 3px solid transparent; background: transparent; color: var(--ash-dark); font: inherit; font-weight: 700; cursor: pointer; }
+    .cart-tab[aria-selected="true"] { border-bottom-color: var(--yellow); color: var(--blue); }
+    .payment-method { margin-top: 16px; padding: 18px; border: 1px solid var(--ash); border-left: 5px solid var(--yellow); border-radius: 5px; }
+    .payment-method h3 { color: var(--blue); font-size: 1.15rem; margin-bottom: 8px; }
+    .payment-method p { color: var(--ash-dark); margin-top: 8px; }
+    .payment-contact { display: inline-block; margin-top: 14px; color: var(--blue); font-weight: 700; }
+    .cart-list > h2, .order-summary h2 { color: var(--blue); font-size: 1.5rem; margin-bottom: 18px; }
+    .cart-item { display: flex; gap: 18px; padding: 18px 0; border-top: 1px solid var(--ash); }
+    .cart-item img { width: 96px; height: 96px; object-fit: cover; border-radius: 5px; background: var(--ash); }
+    .cart-item-info { flex: 1; }
+    .cart-item h2 { color: var(--blue); font-size: 1.2rem; margin-bottom: 4px; }
+    .cart-item p { color: var(--ash-dark); font-size: .9rem; }
+    .cart-item .line-total { color: var(--blue-dark); font-weight: 700; }
+    .quantity-controls { display: flex; align-items: center; gap: 12px; margin-top: 12px; }
+    .quantity-controls button { border: 1px solid var(--blue); background: var(--white); color: var(--blue); border-radius: 4px; min-width: 36px; min-height: 36px; font: inherit; font-weight: 700; cursor: pointer; }
+    .quantity-controls .remove-item { border: 0; color: #a32626; text-decoration: underline; min-width: auto; margin-left: 4px; }
+    .cart-empty { padding: 26px 0; color: var(--ash-dark); }
+    .order-summary { padding: 24px; border-top: 5px solid var(--yellow); }
+    .order-summary p { color: var(--ash-dark); margin-bottom: 14px; }
+    .order-summary .summary-total { color: var(--blue); font-weight: 700; }
+    .btn { display: inline-block; border: 0; border-radius: 4px; padding: 13px 20px; background: var(--yellow); color: var(--blue-dark); font: inherit; font-weight: 700; text-decoration: none; cursor: pointer; text-align: center; }
+    .btn:hover { background: var(--blue); color: var(--white); }
+    .btn-blue { background: var(--blue); color: var(--white); }
+    .btn-blue:hover { background: var(--blue-dark); }
+    .btn[aria-disabled="true"] { opacity: .55; pointer-events: none; }
+    .summary-actions { display: grid; gap: 12px; margin-top: 20px; }
+    .clear-cart { background: transparent; border: 1px solid var(--ash-dark); color: var(--text); }
+    .cart-status { margin-top: 14px; color: var(--blue); min-height: 1.5em; }
+    .cart-status.error { color: #a32626; }
+    footer { background: var(--blue-dark); color: var(--ash); text-align: center; padding: 26px 20px; border-top: 4px solid var(--yellow); font-size: .9rem; }
+    @media (max-width: 760px) {
+      .cart-layout { grid-template-columns: 1fr; }
+      .order-summary { order: -1; }
+      nav { gap: 12px; }
+    }
+    @media (max-width: 480px) {
+      .cart-item { gap: 12px; }
+      .cart-item img { width: 72px; height: 72px; }
+      .quantity-controls { gap: 8px; flex-wrap: wrap; }
+    }
+  </style>
+  <link rel="stylesheet" href="banner.css">
+</head>
+<body>
+  <header>
+    <div class="wrap header-row">
+      <a class="logo" href="home.html" aria-label="Qinit Apparel home">
+        <img src="QinitApparel.png" alt="Qinit Apparel">
+      </a>
+      <nav aria-label="Main navigation">
+        <a href="home.html">Home</a>
+        <a href="our ranges.html">Our Ranges</a>
+        <a href="About.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="cart.html" aria-current="page">Cart (<span data-cart-count>0</span>)</a>
+        <a href="index.html">Sign Up / Log In</a>
+      </nav>
+    </div>
+  </header>
+  <section class="banner">
+    <div class="wrap">
+      <h1>Your Cart</h1>
+      <p>Review your fabric selections before sending your order request.</p>
+    </div>
+  </section>
+  <main class="wrap">
+    <div class="cart-layout">
+      <section class="cart-list" aria-labelledby="cart-heading">
+        <div class="cart-tabs" role="tablist" aria-label="Cart and payment">
+          <button class="cart-tab" id="cart-tab-items" type="button" role="tab" aria-selected="true" aria-controls="cart-panel-items" tabindex="0">Selected ranges</button>
+          <button class="cart-tab" id="cart-tab-payment" type="button" role="tab" aria-selected="false" aria-controls="cart-panel-payment" tabindex="-1">Payment</button>
+        </div>
+        <div id="cart-panel-items" role="tabpanel" aria-labelledby="cart-tab-items">
+          <h2 id="cart-heading">Selected ranges</h2>
+          <div data-cart-items></div>
+        </div>
+        <div id="cart-panel-payment" role="tabpanel" aria-labelledby="cart-tab-payment" hidden>
+          <h2 id="payment-heading">Payment methods</h2>
+          <p>Transfer payment using the account details below. Please contact Qinit Apparel on WhatsApp to confirm your transfer and order.</p>
+          <article class="payment-method">
+            <h3>Nigerian bank transfer</h3>
+            <p><strong>Bank:</strong> Access Bank</p>
+            <p><strong>Account name:</strong> Ojo Inioluwa Blessing</p>
+            <p><strong>Account number:</strong> 1555913454</p>
+          </article>
+          <a class="payment-contact" href="https://wa.me/2347034673506?text=Hello%20Qinit%20Apparel%2C%20I%20have%20made%20a%20bank%20transfer.%20Please%20confirm%20my%20payment%20and%20order.">Confirm bank transfer on WhatsApp</a>
+        </div>
+      </section>
+      <aside class="order-summary" aria-labelledby="summary-heading">
+        <h2 id="summary-heading">Order summary</h2>
+        <p class="summary-total" data-cart-summary>0 items</p>
+        <p class="summary-total" data-cart-total>Total: ₦0</p>
+        <p>We will confirm fabric availability and delivery costs with you on WhatsApp before finalizing your order.</p>
+        <div class="summary-actions">
+          <a class="btn btn-blue" data-cart-checkout href="#" aria-disabled="true">Request order on WhatsApp</a>
+          <a class="btn" href="our ranges.html">Continue shopping</a>
+          <button class="btn clear-cart" type="button" data-cart-clear>Empty cart</button>
+        </div>
+        <p class="cart-status" data-cart-status role="status" aria-live="polite"></p>
+      </aside>
+    </div>
+  </main>
+  <footer>&copy; 2026 Qinit Apparel. All rights reserved. | www.qinitapparel.ng</footer>
+  <script src="range-products.js"></script>
+  <script src="cart.js"></script>
+</body>
+</html>

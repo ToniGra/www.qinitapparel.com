@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Small Range Fabrics | Qinit Apparel</title>
+  <meta name="description" content="Browse Qinit Apparel Small Range Ankara fabrics and add your selections to the cart.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="range-catalog.css">
+  <link rel="stylesheet" href="banner.css">
+</head>
+<body data-range="small">
+  <header>
+    <div class="wrap header-row">
+      <a class="logo" href="home.html" aria-label="Qinit Apparel home">
+        <img src="QinitApparel.png" alt="Qinit Apparel">
+      </a>
+      <nav aria-label="Main navigation">
+        <a href="home.html">Home</a>
+        <a href="our ranges.html" aria-current="page">Our Ranges</a>
+        <a href="About.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="cart.html">Cart (<span data-cart-count>0</span>)</a>
+        <a href="index.html">Sign Up / Log In</a>
+      </nav>
+    </div>
+  </header>
+  <main>
+    <section class="banner">
+      <div class="wrap">
+        <p class="crumbs"><a href="our ranges.html">Our Ranges</a> / Small Range</p>
+        <h1 data-catalog-title>Small Range Fabrics</h1>
+        <p data-catalog-description>Prices are per fabric piece.</p>
+      </div>
+    </section>
+    <section class="wrap catalog-section">
+      <div class="catalog-grid" data-catalog-grid aria-live="polite"></div>
+      <a class="back-link" href="our ranges.html">&larr; Back to Our Ranges</a>
+    </section>
+  </main>
+  <footer>&copy; 2026 Qinit Apparel. All rights reserved. | www.qinitapparel.ng</footer>
+  <p class="cart-notice" data-cart-status role="status" aria-live="polite"></p>
+  <script src="range-products.js"></script>
+  <script src="range-catalog.js"></script>
+  <script src="cart.js"></script>
+</body>
+</html>
